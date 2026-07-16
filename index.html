@@ -16,6 +16,7 @@
 <p class="p1">&lt;html lang="en"&gt;</p>
 <p class="p1">&lt;head&gt;</p>
 <p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
 <p class="p1">&lt;title&gt;13.2 Uneven Heating — Winds &amp; Ocean Currents&lt;/title&gt;</p>
 <p class="p1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
 <p class="p1">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</p>
@@ -71,6 +72,34 @@
 <p class="p1"><span class="Apple-converted-space">  </span>.nav button:disabled{opacity:.3;cursor:not-allowed}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.nav .count{font-family:'JetBrains Mono',monospace;font-size:11px;align-self:center;color:var(--paper);background:var(--ink);padding:14px 18px;border-radius:24px;letter-spacing:.1em}</p>
 <p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Transition text hook */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.transition-hook{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:absolute;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>bottom:100px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>left:8vw;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>right:8vw;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family:'JetBrains Mono',monospace;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:11px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:.15em;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-transform:uppercase;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity:.6;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.transition-hook::before{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>content:"";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:30px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height:1px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:currentColor;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s1 .transition-hook{color:var(--sun-soft);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s2 .transition-hook{color:var(--rust);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s3 .transition-hook{color:var(--ocean);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s4 .transition-hook{color:var(--sky);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s5 .transition-hook{color:var(--rust);}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.s6 .transition-hook{color:var(--sun-soft);}</p>
+<p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>/* Slide 1 - Cover */</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s1{background:linear-gradient(135deg,#0d4d5e 0%,#062831 60%,#1a1410 100%);color:var(--paper);padding:0}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s1 .bg-art{position:absolute;inset:0;overflow:hidden}</p>
@@ -88,11 +117,10 @@
 <p class="p1"><span class="Apple-converted-space">  </span>.s1 h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(48px,7.5vw,112px);line-height:.92;letter-spacing:-.02em;margin-bottom:24px;opacity:0;animation:fadeUp .8s .4s forwards}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s1 h1 em{font-style:italic;font-weight:400;color:var(--sun-soft)}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s1 .lede{max-width:560px;font-size:19px;line-height:1.5;color:rgba(244,237,224,.78);font-family:'Newsreader',serif;opacity:0;animation:fadeUp .8s .6s forwards}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.s1 .meta{position:absolute;bottom:60px;left:8vw;right:8vw;display:flex;justify-content:space-between;align-items:flex-end;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;opacity:0;animation:fadeUp .8s .8s forwards;color:rgba(244,237,224,.6)}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>/* Common slide layout */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.slide-body{padding:90px 8vw 100px;display:grid;gap:50px;width:100%;align-content:center;position:relative;z-index:2}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.slide-body{padding:90px 8vw 140px;display:grid;gap:50px;width:100%;align-content:center;position:relative;z-index:2}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.chapter-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.3em;color:var(--rust);text-transform:uppercase;margin-bottom:18px}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.h-title{font-family:'Fraunces',serif;font-weight:800;font-size:clamp(38px,5vw,68px);line-height:.95;letter-spacing:-.02em;margin-bottom:18px}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.h-title em{font-style:italic;font-weight:400;color:var(--ocean)}</p>
@@ -122,7 +150,6 @@
 <p class="p1"><span class="Apple-converted-space">  </span>.s3 .slide-body{grid-template-columns:1fr 1fr;align-items:center}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s3 .viz{position:relative;height:520px}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s3 .viz svg{width:100%;height:100%}</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.s3 .label-chip{position:absolute;background:var(--ink);color:var(--paper);padding:6px 12px;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em}</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>/* Slide 4 - Mountain breeze */</p>
 <p class="p1"><span class="Apple-converted-space">  </span>.s4{background:linear-gradient(180deg,#0d1a23 0%,#1a2f3d 50%,#062831 100%);color:var(--paper)}</p>
@@ -199,11 +226,8 @@
 <p class="p1"><span class="Apple-converted-space">  </span>.slide.active .reveal:nth-child(5){animation-delay:.7s}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>@keyframes revealUp{to{opacity:1;transform:translateY(0)}}</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>/* Transition hint */</p>
-<p class="p1"><span class="Apple-converted-space">  </span>.transition-hint{position:fixed;bottom:80px;right:38px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--paper);mix-blend-mode:difference;letter-spacing:.15em;z-index:99;opacity:.5}</p>
-<p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>@media (max-width:900px){</p>
-<p class="p1"><span class="Apple-converted-space">    </span>.slide-body{grid-template-columns:1fr !important;padding:80px 6vw 100px}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.slide-body{grid-template-columns:1fr !important;padding:80px 6vw 140px}</p>
 <p class="p1"><span class="Apple-converted-space">    </span>.s7 .summary-grid{grid-template-columns:1fr}</p>
 <p class="p1"><span class="Apple-converted-space">  </span>}</p>
 <p class="p1">&lt;/style&gt;</p>
@@ -225,10 +249,7 @@
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;Uneven Heating&lt;br&gt;Causes &lt;em&gt;Wind&lt;/em&gt;&lt;br&gt;&amp; Ocean Currents&lt;/h1&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;p class="lede"&gt;The Sun doesn't warm the Earth evenly — and that simple fact is what makes our air move, our oceans flow, and our climate work. Let's follow the heat.&lt;/p&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="meta"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;A VISUAL JOURNEY · 7 SCENES&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;SCROLL →&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Next up: We start small, with winds you can feel in your own neighborhood&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 2 --&gt;</p>
@@ -268,6 +289,7 @@
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Next: Let's watch this happen under the morning sun&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 3 --&gt;</p>
@@ -275,7 +297,6 @@
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="slide-body"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="viz reveal"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;svg viewBox="0 0 500 500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Sky --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;defs&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">              </span>&lt;stop offset="0%" stop-color="#f5d6a0"/&gt;</p>
@@ -287,18 +308,14 @@
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;/linearGradient&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/defs&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;rect width="500" height="500" fill="url(#sky3)"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Sun --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="380" cy="100" r="50" fill="#e8753a" opacity=".9"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="380" cy="100" r="70" fill="#e8753a" opacity=".25"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Mountains --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M0,500 L0,300 L120,180 L220,280 L320,140 L420,260 L500,200 L500,500 Z" fill="url(#mtn3)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M0,500 L0,380 L80,300 L180,360 L280,290 L380,370 L500,320 L500,500 Z" fill="#6b2a12" opacity=".7"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Up arrows (warm air rising) --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;g stroke="#e8753a" stroke-width="3" fill="none" stroke-linecap="round"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M120,260 L120,180" marker-end="url(#arr3)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M320,220 L320,140" marker-end="url(#arr3)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/g&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Valley breeze arrow --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;g stroke="#0d4d5e" stroke-width="3" fill="none" stroke-linecap="round"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M250,420 Q200,360 150,310" marker-end="url(#arr3b)" stroke-dasharray="6 4"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/g&gt;</p>
@@ -310,7 +327,6 @@
 <p class="p1"><span class="Apple-converted-space">              </span>&lt;path d="M0,0 L10,5 L0,10 Z" fill="#0d4d5e"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;/marker&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/defs&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Labels --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;text x="125" y="170" font-family="JetBrains Mono" font-size="10" fill="#a8431f" letter-spacing="1"&gt;RISING WARM AIR&lt;/text&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;text x="255" y="440" font-family="JetBrains Mono" font-size="10" fill="#0d4d5e" letter-spacing="1"&gt;VALLEY BREEZE&lt;/text&gt;</p>
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/svg&gt;</p>
@@ -326,6 +342,7 @@
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Next: But what happens when the sun goes down?&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 4 --&gt;</p>
@@ -344,24 +361,19 @@
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;/linearGradient&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/defs&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;rect width="500" height="500" fill="url(#sky4)"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Stars --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="80" cy="60" r="1.5" fill="#f4ede0"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="200" cy="90" r="1" fill="#f4ede0"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="350" cy="70" r="1.5" fill="#f4ede0"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="430" cy="120" r="1" fill="#f4ede0"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="120" cy="130" r="1" fill="#f4ede0"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Moon --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="100" cy="100" r="35" fill="#e8e0c8" opacity=".9"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;circle cx="115" cy="92" r="32" fill="#1a2f3d"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Mountains --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M0,500 L0,300 L120,180 L220,280 L320,140 L420,260 L500,200 L500,500 Z" fill="url(#mtn4)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;path d="M0,500 L0,380 L80,300 L180,360 L280,290 L380,370 L500,320 L500,500 Z" fill="#062831" opacity=".8"/&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Down arrows (cool air sinking) --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;g stroke="#7ab8c9" stroke-width="3" fill="none" stroke-linecap="round"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M180,180 L180,260" marker-end="url(#arr4)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M380,140 L380,220" marker-end="url(#arr4)"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/g&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Mountain breeze flowing down into valley --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;g stroke="#f5a661" stroke-width="3" fill="none" stroke-linecap="round"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M150,310 Q200,360 250,420" marker-end="url(#arr4b)" stroke-dasharray="6 4"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;/g&gt;</p>
@@ -388,6 +400,7 @@
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Next: Zoom out, and these local patterns become global forces&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 5 --&gt;</p>
@@ -428,7 +441,6 @@
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="arrow a2"&gt;↙&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="arrow a3"&gt;↘&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="arrow a4"&gt;↓&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">          </span>&lt;!-- Continents hint --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">          </span>&lt;svg viewBox="0 0 420 420" style="position:absolute;inset:0;opacity:.25"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M120,140 Q160,120 200,150 Q220,180 200,210 Q170,220 140,200 Q110,180 120,140 Z" fill="#3a5d3a"/&gt;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>&lt;path d="M250,180 Q290,170 310,200 Q320,240 290,260 Q260,250 250,220 Z" fill="#3a5d3a"/&gt;</p>
@@ -437,6 +449,7 @@
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Next: What happens when these winds meet the ocean?&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 6 --&gt;</p>
@@ -483,6 +496,7 @@
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="transition-hook"&gt;Finally: Let's recap the big ideas&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;/section&gt;</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- SLIDE 7 --&gt;</p>
@@ -554,8 +568,6 @@
 <p class="p1"><span class="Apple-converted-space">  </span>&lt;button id="next"&gt;Next&lt;/button&gt;</p>
 <p class="p1">&lt;/div&gt;</p>
 <p class="p2"><br></p>
-<p class="p1">&lt;div class="transition-hint"&gt;USE ← → OR CLICK&lt;/div&gt;</p>
-<p class="p2"><br></p>
 <p class="p1">&lt;div class="grain"&gt;&lt;/div&gt;</p>
 <p class="p2"><br></p>
 <p class="p1">&lt;script&gt;</p>
@@ -609,7 +621,7 @@
 <p class="p1"><span class="Apple-converted-space">    </span>else if(e.key==='ArrowLeft') goTo(current-1);</p>
 <p class="p1"><span class="Apple-converted-space">  </span>});</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">  </span>// Touch swipe</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Touch swipe for mobile</p>
 <p class="p1"><span class="Apple-converted-space">  </span>let touchStartX = 0;</p>
 <p class="p1"><span class="Apple-converted-space">  </span>document.addEventListener('touchstart',e=&gt;{touchStartX=e.changedTouches[0].screenX});</p>
 <p class="p1"><span class="Apple-converted-space">  </span>document.addEventListener('touchend',e=&gt;{</p>
