@@ -680,19 +680,19 @@
         <div class="sticky-notes-grid reveal">
           <div class="sticky-note yellow" data-q="0">
             <h3>Question 1</h3>
-            <p>What is the main cause of all winds?</p>
+            <p>Why do high and low-pressure areas form in the atmosphere?</p>
           </div>
           <div class="sticky-note pink" data-q="1">
             <h3>Question 2</h3>
-            <p>Which breeze blows uphill during the day?</p>
+            <p>What are gyres?</p>
           </div>
           <div class="sticky-note blue" data-q="2">
             <h3>Question 3</h3>
-            <p>What causes planetary winds to curve?</p>
+            <p>What makes planetary winds deflect from their straight paths?</p>
           </div>
           <div class="sticky-note green" data-q="3">
             <h3>Question 4</h3>
-            <p>How do ocean gyres spin in the Northern Hemisphere?</p>
+            <p>Why does air rise near the equator?</p>
           </div>
         </div>
       </div>
@@ -801,28 +801,48 @@
   // ---- Quiz Logic ----
   const quizData = [
     {
-      q: "What is the main cause of all winds?",
-      options: ["A. The moon's gravity", "B. Uneven heating of the Earth", "C. Ocean currents", "D. Clouds moving"],
-      correct: 1,
+      q: "Why do high and low-pressure areas form in the atmosphere?",
+      options: [
+        "A. Because of the moon's gravitational pull",
+        "B. Because of the uneven heating of the Earth's surface by the Sun",
+        "C. Because ocean currents push the air around",
+        "D. Because clouds block the sunlight"
+      ],
+      correct: 1, // B
       bg: "linear-gradient(135deg, #fff9c4, #f5a661)"
     },
     {
-      q: "Which breeze blows uphill during the day?",
-      options: ["A. Mountain breeze", "B. Sea breeze", "C. Valley breeze", "D. Polar breeze"],
-      correct: 2,
-      bg: "linear-gradient(135deg, #b3e5fc, #f8bbd0)"
+      q: "What are gyres?",
+      options: [
+        "A. Small local winds that blow up mountains",
+        "B. The lines that divide Earth's hemispheres",
+        "C. Large systems of circular ocean currents formed by global wind patterns",
+        "D. The process of warm air rising at the equator"
+      ],
+      correct: 2, // C
+      bg: "linear-gradient(135deg, #b3e5fc, #0d4d5e)"
     },
     {
-      q: "What causes planetary winds to curve?",
-      options: ["A. The Sun's heat", "B. Earth's rotation", "C. Mountains blocking them", "D. Ocean currents"],
-      correct: 1,
+      q: "What makes the planetary winds deflect from their straight paths, and in which direction does the wind deflect in each hemisphere?",
+      options: [
+        "A. Ocean currents; left in the North, right in the South",
+        "B. Earth's rotation; right in the Northern Hemisphere, left in the Southern Hemisphere",
+        "C. Earth's rotation; left in the Northern Hemisphere, right in the Southern Hemisphere",
+        "D. The Sun's heat; straight up in both hemispheres"
+      ],
+      correct: 1, // B (Corrected: Right in North, Left in South)
       bg: "linear-gradient(135deg, #c8e6c9, #7ab8c9)"
     },
     {
-      q: "How do ocean gyres spin in the Northern Hemisphere?",
-      options: ["A. Clockwise", "B. Counter-clockwise", "C. They don't spin", "D. Straight up and down"],
-      correct: 0,
-      bg: "linear-gradient(135deg, #b3e5fc, #0d4d5e)"
+      q: "Why does air rise near the equator?",
+      options: [
+        "A. Because the air is cold and dense",
+        "B. Because the Earth spins faster at the equator",
+        "C. Because the ocean currents push it up",
+        "D. Because the Sun heats the Earth intensely there, warming the air"
+      ],
+      correct: 3, // D
+      bg: "linear-gradient(135deg, #f8bbd0, #e8753a)"
     }
   ];
 
