@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;width:100%;overflow:hidden;background:var(--ink);font-family:'Newsreader',serif;color:var(--ink)}
-  .deck{position:relative;width:100vw;height:100vh;overflow:hidden}
+  .deck{position:relative;width:100vw;height:100vh;overflow:hidden;}
   .slide{
     position:absolute;inset:0;
     background:var(--paper);
@@ -53,7 +53,7 @@
 
   /* Nav arrows */
   .nav{position:fixed;bottom:clamp(12px, 2vw, 28px);left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100;align-items:center}
-  .nav button{background:var(--ink);color:var(--paper);border:none;height:clamp(34px, 4vw, 46px);padding:0 clamp(14px, 2.5vw, 22px);border-radius:24px;cursor:pointer;font-size:clamp(11px, 1.5vw, 14px);display:flex;align-items:center;justify-content:center;transition:all .3s ease;font-family:inherit;letter-spacing:.05em}
+  .nav button{background:var(--ink);color:var(--paper);border:none;height:clamp(34px, 4vw, 46px);padding:0 clamp(14px, 2.5vw, 22px);border-radius:24px;cursor:pointer;font-size:clamp(11px, 1.5vw, 14px);display:flex;align-items:center;justify-content:center;transition:all .3s ease;font-family:inherit;letter-spacing:.05em;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
   .nav button:hover{background:var(--sun);transform:scale(1.05)}
   .nav button:disabled{opacity:.3;cursor:not-allowed}
   .nav .count{font-family:'JetBrains Mono',monospace;font-size:clamp(9px, 1.2vw, 11px);align-self:center;color:var(--paper);background:var(--ink);padding:clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 18px);border-radius:24px;letter-spacing:.1em}
@@ -120,7 +120,7 @@
   /* Slide 2 - Local winds intro */
   .s2 .slide-body{grid-template-columns:1.1fr .9fr}
   .s2 .diagram{position:relative;height:100%;max-height:50vh;display:flex;flex-direction:column;gap:16px}
-  .s2 .panel{flex:1;background:var(--cream);border:1.5px solid var(--line);border-radius:8px;padding:clamp(14px, 2vw, 24px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+  .s2 .panel{flex:1;background:var(--cream);border:1.5px solid var(--line);border-radius:8px;padding:clamp(14px, 2vw, 24px);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.03)}
   .s2 .panel-label{font-family:'JetBrains Mono',monospace;font-size:clamp(8px, 1vw, 10px);letter-spacing:.2em;color:var(--rust);text-transform:uppercase;margin-bottom:6px}
   .s2 .panel-title{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(16px, 2vw, 24px);margin-bottom:8px;color:var(--ocean-deep)}
   .s2 .panel-text{font-size:clamp(11px, 1.4vw, 14px);line-height:1.5;color:#4a3f33;position:relative;z-index:2}
@@ -195,7 +195,7 @@
   .s7 .slide-body{padding:clamp(60px, 8vh, 80px) clamp(20px, 5vw, 80px);align-content:center}
   .s7 .h-title{font-size:clamp(28px, 5.5vw, 76px);margin-bottom:8px}
   .s7 .summary-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:clamp(12px, 2vw, 28px);margin-top:clamp(24px, 4vh, 50px)}
-  .s7 .card{padding:clamp(16px, 2vw, 28px);background:var(--cream);border:1.5px solid var(--line);border-radius:8px;position:relative;overflow:hidden;transition:transform .4s ease}
+  .s7 .card{padding:clamp(16px, 2vw, 28px);background:var(--cream);border:1.5px solid var(--line);border-radius:8px;position:relative;overflow:hidden;transition:transform .4s ease;box-shadow:0 8px 20px rgba(0,0,0,0.03)}
   .s7 .card:hover{transform:translateY(-6px)}
   .s7 .card-num{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(40px, 5vw, 64px);line-height:1;color:var(--sun);opacity:.5;position:absolute;top:8px;right:18px}
   .s7 .card-icon{width:48px;height:48px;margin-bottom:14px;display:flex;align-items:center;justify-content:center}
@@ -205,10 +205,10 @@
   /* Slide 8 - Quiz */
   .s8{background:var(--paper);overflow:hidden}
   .s8 .slide-body{display:block; padding:clamp(60px, 8vh, 80px) clamp(20px, 5vw, 80px);overflow-y:auto;}
-  .quiz-grid-view, .quiz-detail-view { transition: opacity 0.4s ease, transform 0.4s ease; width:100%; }
-  .quiz-grid-view.hidden { opacity: 0; pointer-events: none; transform: scale(0.95); position: absolute; }
-  .quiz-detail-view { opacity: 0; pointer-events: none; transform: scale(0.95); position: absolute; }
-  .quiz-detail-view.active { opacity: 1; pointer-events: auto; transform: scale(1); position: relative; }
+  .quiz-grid-view, .quiz-detail-view { transition: opacity 0.4s ease, transform 0.4s ease; width:100%; height:100%; }
+  .quiz-grid-view.hidden { opacity: 0; pointer-events: none; transform: scale(0.98); position: absolute; }
+  .quiz-detail-view { opacity: 0; pointer-events: none; position: absolute; perspective: 1200px; }
+  .quiz-detail-view.active { opacity: 1; pointer-events: auto; position: relative; }
   
   .sticky-notes-grid {
     display: grid;
@@ -220,8 +220,8 @@
   .sticky-note {
     padding: clamp(14px, 2vw, 30px);
     cursor: pointer;
-    box-shadow: 5px 8px 15px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background 0.5s ease;
     position: relative;
     min-height: clamp(120px, 20vh, 200px);
     display: flex;
@@ -232,7 +232,7 @@
   }
   .sticky-note:hover {
     transform: scale(1.03) rotate(0deg) !important;
-    box-shadow: 8px 12px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
     z-index: 10;
   }
   .sticky-note h3 {
@@ -254,8 +254,8 @@
     right: 0;
     border-width: 0 0 20px 20px;
     border-style: solid;
-    border-color: transparent transparent rgba(0,0,0,0.1) rgba(255,255,255,0.4);
-    box-shadow: -3px -3px 5px rgba(0,0,0,0.1) inset;
+    border-color: transparent transparent rgba(0,0,0,0.05) rgba(255,255,255,0.4);
+    box-shadow: -2px -2px 5px rgba(0,0,0,0.05) inset;
   }
   
   /* Sticky Note Colors */
@@ -269,7 +269,7 @@
   .sticky-note.locked {
     background: #e0e0e0 !important;
     transform: rotate(0deg) !important;
-    box-shadow: 5px 8px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     pointer-events: none;
     opacity: 0.9;
   }
@@ -287,7 +287,7 @@
   }
   @keyframes pop-in {
     0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
-    60% { transform: scale(1.1) rotate(-3deg); opacity: 1; }
+    60% { transform: scale(1.05) rotate(-3deg); opacity: 1; }
     100% { transform: scale(1) rotate(-1.5deg); opacity: 1; }
   }
 
@@ -297,7 +297,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100%;
   }
   .quiz-bg {
     position: absolute;
@@ -308,14 +307,15 @@
     border-radius: 12px;
   }
   .quiz-content {
-    background: rgba(255,255,255,0.95);
-    padding: clamp(20px, 4vw, 50px) clamp(16px, 3vw, 60px);
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.98);
+    padding: clamp(24px, 4vw, 50px) clamp(20px, 3vw, 60px);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
     max-width: 700px;
     width: 100%;
     max-height: 80vh;
     overflow-y: auto;
+    position: relative;
   }
   #quizQuestionText {
     font-family: 'Fraunces', serif;
@@ -337,14 +337,14 @@
     font-size: clamp(12px, 1.5vw, 16px);
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     font-family: 'Newsreader', serif;
     color: var(--ink);
     text-align: left;
   }
-  .quiz-option:hover { border-color: var(--sun-soft); background: #fffdf5; transform: translateY(-2px); }
-  .quiz-option.correct { background: #81c784; color: #fff; border-color: #388e3c; transform: scale(1); }
-  .quiz-option.wrong { background: #e57373; color: #fff; border-color: #d32f2f; }
+  .quiz-option:hover { border-color: var(--sun-soft); background: #fffdf5; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.03); }
+  .quiz-option.correct { background: #81c784; color: #fff; border-color: #388e3c; transform: scale(1); box-shadow: 0 4px 10px rgba(56, 142, 60, 0.2); }
+  .quiz-option.wrong { background: #e57373; color: #fff; border-color: #d32f2f; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2); }
   .quiz-option.disabled { pointer-events: none; opacity: 0.7; }
   
   .quiz-feedback {
@@ -359,15 +359,142 @@
     background: var(--ink);
     color: var(--paper);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 24px;
     cursor: pointer;
     font-family: 'JetBrains Mono';
     font-size: 11px;
     letter-spacing: 0.1em;
     transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
-  .quiz-back-btn:hover { background: var(--sun); }
+  .quiz-back-btn:hover { background: var(--sun); transform: translateY(-2px); }
+
+  /* =======================================
+     MINIMALIST QUIZ TRANSITIONS
+     ======================================= */
+
+  /* 1 & 4: Wind Transition (Smooth slide + wipe) */
+  .quiz-detail-view.transition-wind {
+    animation: m-wind 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes m-wind {
+    0% { opacity: 0; transform: translateX(40px); clip-path: inset(0 0 0 100%); }
+    100% { opacity: 1; transform: translateX(0); clip-path: inset(0 0 0 0); }
+  }
+
+  /* 2: Water Spiral Transition (Soft scale + blur) */
+  .quiz-detail-view.transition-water {
+    animation: m-water 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes m-water {
+    0% { opacity: 0; transform: scale(0.95); filter: blur(8px); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+  }
+
+  /* 3: Planet Spin Transition (Clean 3D flip) */
+  .quiz-detail-view.transition-planet {
+    animation: m-planet 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform-origin: center center;
+  }
+  @keyframes m-planet {
+    0% { opacity: 0; transform: perspective(1200px) rotateY(90deg); }
+    100% { opacity: 1; transform: perspective(1200px) rotateY(0deg); }
+  }
+
+  /* 5: SpongeBob Bubbles Transition (Subtle fade up + soft bubbles) */
+  .quiz-detail-view.transition-bubbles {
+    animation: m-bubbles 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes m-bubbles {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .bubble {
+    position: absolute;
+    bottom: -10%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(135,206,235,0.1));
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.5);
+    animation: bubble-rise 4s ease-out forwards;
+    z-index: 100;
+    pointer-events: none;
+    filter: blur(1px);
+  }
+  @keyframes bubble-rise {
+    0% { bottom: -10%; opacity: 0; transform: translateX(0) scale(0.8); }
+    20% { opacity: 0.8; }
+    100% { bottom: 110%; opacity: 0; transform: translateX(20px) scale(1.2); }
+  }
+
+  /* =======================================
+     MINI WHITEBOARD WIDGET
+     ======================================= */
+  .whiteboard-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    z-index: 150;
+    display: none;
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.3s ease;
+    flex-direction: column;
+    border: 1px solid var(--line);
+  }
+  .whiteboard-widget.active { display: flex; }
+  .whiteboard-widget.expanded {
+    width: min(450px, 80vw);
+    height: min(350px, 60vh);
+    border-radius: 16px;
+  }
+  .wb-collapsed-view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .whiteboard-widget.expanded .wb-collapsed-view { display: none; }
+  
+  .wb-header {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+  }
+  .whiteboard-widget.expanded .wb-header { display: flex; }
+  .wb-title { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ocean-deep); }
+  .wb-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .wb-btn:hover { background: rgba(0,0,0,0.05); }
+  
+  .wb-canvas {
+    width: 100%;
+    flex: 1;
+    background: #fff;
+    cursor: crosshair;
+    touch-action: none; /* Prevent scrolling while drawing */
+    display: none;
+  }
+  .whiteboard-widget.expanded .wb-canvas { display: block; }
 
   /* Reveal animations */
   .slide.active .reveal{opacity:0;transform:translateY(20px);animation:revealUp .8s forwards}
@@ -391,6 +518,7 @@
     .dots { right: 12px; }
     .transition-hook { display: none; }
     .nav { width: 90%; justify-content: space-between; }
+    .whiteboard-widget { bottom: 80px; left: 15px; }
   }
 </style>
 </head>
@@ -764,6 +892,26 @@
 
 </div>
 
+<!-- Mini Whiteboard Widget -->
+<div class="whiteboard-widget" id="whiteboard">
+  <div class="wb-collapsed-view" id="wbExpandBtn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+      <path d="M2 2l7.586 7.586"></path>
+      <circle cx="11" cy="11" r="2"></circle>
+    </svg>
+  </div>
+  <div class="wb-header">
+    <span class="wb-title">Whiteboard</span>
+    <div>
+      <button class="wb-btn" id="wbClearBtn">Clear</button>
+      <button class="wb-btn" id="wbCloseBtn">Minimize</button>
+    </div>
+  </div>
+  <canvas class="wb-canvas" id="wbCanvas"></canvas>
+</div>
+
 <!-- Top bar -->
 <div class="topbar">
   <div class="brand">Earth Science · Ch. 13.2</div>
@@ -783,6 +931,104 @@
 <div class="grain"></div>
 
 <script>
+  // ---- Whiteboard Logic & Variables (Moved to top so updateUI can see them) ----
+  const whiteboard = document.getElementById('whiteboard');
+  const wbExpandBtn = document.getElementById('wbExpandBtn');
+  const wbCloseBtn = document.getElementById('wbCloseBtn');
+  const wbClearBtn = document.getElementById('wbClearBtn');
+  const wbCanvas = document.getElementById('wbCanvas');
+  const wbCtx = wbCanvas.getContext('2d');
+  let wbDrawing = false;
+  let wbLastX = 0;
+  let wbLastY = 0;
+
+  function updateWhiteboardVisibility() {
+    // Show only on slides 2 through 7 (indexes 1 to 6)
+    if (current > 0 && current < total - 1) {
+      whiteboard.classList.add('active');
+    } else {
+      whiteboard.classList.remove('active');
+      whiteboard.classList.remove('expanded'); // Always minimize when hiding
+    }
+  }
+
+  function setupCanvas() {
+    const rect = wbCanvas.getBoundingClientRect();
+    // Save current drawing if any
+    const imgData = wbCanvas.toDataURL(); 
+    const dpr = window.devicePixelRatio || 1;
+    wbCanvas.width = rect.width * dpr;
+    wbCanvas.height = rect.height * dpr;
+    wbCtx.scale(dpr, dpr);
+    wbCtx.lineCap = 'round';
+    wbCtx.lineJoin = 'round';
+    wbCtx.strokeStyle = '#1a1410';
+    wbCtx.lineWidth = 2.5;
+    
+    // Restore drawing
+    const img = new Image();
+    img.onload = () => {
+      wbCtx.drawImage(img, 0, 0, rect.width, rect.height);
+    };
+    img.src = imgData;
+  }
+
+  wbExpandBtn.addEventListener('click', () => {
+    whiteboard.classList.add('expanded');
+    setTimeout(setupCanvas, 300); // Wait for CSS transition to finish before setting canvas size
+  });
+
+  wbCloseBtn.addEventListener('click', () => {
+    whiteboard.classList.remove('expanded');
+  });
+
+  wbClearBtn.addEventListener('click', () => {
+    const rect = wbCanvas.getBoundingClientRect();
+    wbCtx.clearRect(0, 0, rect.width, rect.height);
+  });
+
+  function getWbPos(e) {
+    const rect = wbCanvas.getBoundingClientRect();
+    const x = (e.clientX || e.touches[0].clientX) - rect.left;
+    const y = (e.clientY || e.touches[0].clientY) - rect.top;
+    return { x, y };
+  }
+
+  function startWbDraw(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    wbDrawing = true;
+    const pos = getWbPos(e);
+    wbLastX = pos.x;
+    wbLastY = pos.y;
+  }
+
+  function drawWb(e) {
+    if (!wbDrawing) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const pos = getWbPos(e);
+    wbCtx.beginPath();
+    wbCtx.moveTo(wbLastX, wbLastY);
+    wbCtx.lineTo(pos.x, pos.y);
+    wbCtx.stroke();
+    wbLastX = pos.x;
+    wbLastY = pos.y;
+  }
+
+  function stopWbDraw() {
+    wbDrawing = false;
+  }
+
+  wbCanvas.addEventListener('mousedown', startWbDraw);
+  wbCanvas.addEventListener('mousemove', drawWb);
+  wbCanvas.addEventListener('mouseup', stopWbDraw);
+  wbCanvas.addEventListener('mouseleave', stopWbDraw);
+  
+  wbCanvas.addEventListener('touchstart', startWbDraw);
+  wbCanvas.addEventListener('touchmove', drawWb);
+  wbCanvas.addEventListener('touchend', stopWbDraw);
+
   // ---- Slide Navigation ----
   const slides = document.querySelectorAll('.slide');
   const total = slides.length;
@@ -826,6 +1072,7 @@
     curEl.textContent = pad(current);
     prevBtn.disabled = current===0;
     nextBtn.disabled = current===total-1;
+    updateWhiteboardVisibility();
   }
 
   prevBtn.addEventListener('click',()=>goTo(current-1));
@@ -840,8 +1087,8 @@
   let touchStartX = 0;
   document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX});
   document.addEventListener('touchend',e=>{
-    // Only swipe if not touching the quiz options
-    if(e.target.classList.contains('quiz-option') || e.target.classList.contains('sticky-note')) return;
+    // Ignore swipe if touching the whiteboard, quiz options, or sticky notes
+    if(e.target.closest('.whiteboard-widget') || e.target.classList.contains('quiz-option') || e.target.classList.contains('sticky-note')) return;
     const diff = e.changedTouches[0].screenX - touchStartX;
     if(Math.abs(diff)>50){
       if(diff<0) goTo(current+1);
@@ -910,6 +1157,9 @@
     }
   ];
 
+  // Custom transition classes for each question
+  const transitions = ['transition-wind', 'transition-water', 'transition-planet', 'transition-wind', 'transition-bubbles'];
+
   const quizGrid = document.getElementById('quizGrid');
   const quizDetail = document.getElementById('quizDetail');
   const quizQuestionText = document.getElementById('quizQuestionText');
@@ -945,8 +1195,41 @@
       quizOptions.appendChild(btn);
     });
 
+    // Clear previous transition classes
+    quizDetail.className = 'quiz-detail-view';
+    // Add the specific transition class
+    quizDetail.classList.add(transitions[index]);
+    
     quizGrid.classList.add('hidden');
+    
+    // Force reflow to restart animation
+    void quizDetail.offsetWidth;
+    
     quizDetail.classList.add('active');
+
+    // Handle SpongeBob bubbles
+    if (index === 4) {
+      spawnBubbles();
+    }
+  }
+
+  function spawnBubbles() {
+    const container = document.getElementById('quizDetail');
+    // Limit to 6 subtle bubbles
+    for(let i=0; i<6; i++) {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      const size = Math.random() * 50 + 30; // 30px to 80px
+      bubble.style.width = size + 'px';
+      bubble.style.height = size + 'px';
+      bubble.style.left = (Math.random() * 80 + 10) + '%';
+      bubble.style.animationDuration = (Math.random() * 2 + 3) + 's'; // 3s to 5s
+      bubble.style.animationDelay = (Math.random() * 1) + 's';
+      container.appendChild(bubble);
+      
+      // Clean up bubbles after animation
+      setTimeout(() => bubble.remove(), 6000);
+    }
   }
 
   function selectAnswer(btn, selectedIndex, correctIndex, qIndex) {
