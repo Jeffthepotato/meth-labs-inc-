@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -140,7 +140,7 @@
   .s3 .viz svg{width:100%;height:100%;max-width:500px}
 
   /* Slide 4 - Mountain breeze */
-  .s4{background:linear-gradient(180deg,#0d1a23 0%,#1a2f3d 50%,#062831 100%);color:var(--paper)}
+  .s4{background:linear-gradient(180deg,#0d1a23 0,#1a2f3d 50%,#062831 100%);color:var(--paper)}
   .s4 .slide-body{grid-template-columns:1fr 1fr;align-items:center}
   .s4 .chapter-tag{color:var(--sun-soft)}
   .s4 .h-title em{color:var(--sun-soft)}
@@ -442,15 +442,21 @@
     z-index: 150;
     display: none;
     overflow: hidden;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-radius 0.3s ease, top 0.3s ease, left 0.3s ease, transform 0.3s ease;
     flex-direction: column;
     border: 1px solid var(--line);
   }
   .whiteboard-widget.active { display: flex; }
   .whiteboard-widget.expanded {
-    width: min(450px, 80vw);
-    height: min(350px, 60vh);
+    width: 85vw; /* Enormous width (85% of screen) */
+    height: 80vh; /* Enormous height (80% of screen) */
     border-radius: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: auto;
+    max-width: none;
+    max-height: none;
   }
   .wb-collapsed-view {
     width: 100%;
@@ -467,12 +473,13 @@
     display: none;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px;
+    padding: 10px 16px;
     background: var(--cream);
     border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
   }
   .whiteboard-widget.expanded .wb-header { display: flex; }
-  .wb-title { font-family: 'Caveat', cursive; font-size: 18px; color: var(--ocean-deep); }
+  .wb-title { font-family: 'Caveat', cursive; font-size: 20px; color: var(--ocean-deep); }
   .wb-btn {
     background: transparent;
     border: none;
@@ -480,7 +487,7 @@
     color: var(--ink);
     font-size: 12px;
     font-family: 'JetBrains Mono', monospace;
-    padding: 4px 8px;
+    padding: 6px 10px;
     border-radius: 6px;
     transition: background 0.2s;
   }
@@ -491,7 +498,7 @@
     flex: 1;
     background: #fff;
     cursor: crosshair;
-    touch-action: none; /* Prevent scrolling while drawing */
+    touch-action: none;
     display: none;
   }
   .whiteboard-widget.expanded .wb-canvas { display: block; }
@@ -519,6 +526,10 @@
     .transition-hook { display: none; }
     .nav { width: 90%; justify-content: space-between; }
     .whiteboard-widget { bottom: 80px; left: 15px; }
+    .whiteboard-widget.expanded {
+      width: 90vw;
+      height: 75vh;
+    }
   }
 </style>
 </head>
