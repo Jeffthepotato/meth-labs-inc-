@@ -58,7 +58,6 @@
   .nav button:disabled{opacity:.3;cursor:not-allowed}
   .nav .count{font-family:'JetBrains Mono',monospace;font-size:clamp(9px, 1.2vw, 11px);align-self:center;color:var(--paper);background:var(--ink);padding:clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 18px);border-radius:24px;letter-spacing:.1em}
   
-  /* Specific styling for the Fullscreen Button */
   .fs-btn {
     padding: 0 !important;
     width: clamp(34px, 4vw, 46px);
@@ -327,6 +326,18 @@
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #quizImage {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default */
   }
   #quizQuestionText {
     font-family: 'Fraunces', serif;
@@ -378,6 +389,7 @@
     letter-spacing: 0.1em;
     transition: all 0.3s;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    align-self: center;
   }
   .quiz-back-btn:hover { background: var(--sun); transform: translateY(-2px); }
 
@@ -540,6 +552,9 @@
     .whiteboard-widget.expanded {
       width: 90vw;
       height: 75vh;
+    }
+    #quizImage {
+      max-height: 180px;
     }
   }
 </style>
@@ -900,6 +915,7 @@
       <div class="quiz-detail-view" id="quizDetail">
         <div class="quiz-bg" id="quizBg"></div>
         <div class="quiz-content">
+          <img id="quizImage" src="" alt="Question Image">
           <h2 id="quizQuestionText">Question goes here</h2>
           <div class="quiz-options" id="quizOptions">
             <!-- Options injected here -->
@@ -961,7 +977,7 @@
 <div class="grain"></div>
 
 <script>
-  // ---- Whiteboard Logic & Variables (Moved to top so updateUI can see them) ----
+  // ---- Whiteboard Logic & Variables ----
   const whiteboard = document.getElementById('whiteboard');
   const wbExpandBtn = document.getElementById('wbExpandBtn');
   const wbCloseBtn = document.getElementById('wbCloseBtn');
@@ -1066,7 +1082,6 @@
   const countEl = document.getElementById('count');
   const curEl = document.getElementById('cur');
 
-  // Build dots
   slides.forEach((s,i)=>{
     const b = document.createElement('button');
     b.className = 'dot' + (i===0?' active':'');
@@ -1109,7 +1124,6 @@
     else if(e.key==='ArrowLeft') goTo(current-1);
   });
 
-  // Touch swipe
   let touchStartX = 0;
   document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX});
   document.addEventListener('touchend',e=>{
@@ -1133,13 +1147,13 @@
     if (!document.fullscreenElement && !document.webkitFullscreenElement) {
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) { // Safari
+      } else if (elem.webkitRequestFullscreen) { 
         elem.webkitRequestFullscreen();
       }
     } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) { // Safari
+      } else if (document.webkitExitFullscreen) { 
         document.webkitExitFullscreen();
       }
     }
@@ -1210,7 +1224,8 @@
         "D. It is caused by ocean currents carving deep holes into the sea floor"
       ],
       correct: 1,
-      bg: "linear-gradient(135deg, #e1bee7, #7ab8c9)"
+      bg: "linear-gradient(135deg, #e1bee7, #7ab8c9)",
+      image: "https://z-cdn-media.chatglm.cn/files/bc1a684d-9536-47d7-bd2b-d9d97e8f880f.png?auth_key=1885349727-7719a1aafaaa4630bd7b41f8a6338fe1-0-d230319ed55c45b1099c8f2829215b36"
     }
   ];
 
@@ -1223,6 +1238,7 @@
   const quizBg = document.getElementById('quizBg');
   const quizFeedback = document.getElementById('quizFeedback');
   const quizBackBtn = document.getElementById('quizBackBtn');
+  const quizImage = document.getElementById('quizImage');
   
   const answeredStatus = [false, false, false, false];
 
@@ -1239,6 +1255,15 @@
     quizQuestionText.textContent = data.q;
     quizBg.style.background = data.bg;
     quizFeedback.textContent = "";
+    
+    // Handle Image
+    if (data.image) {
+      quizImage.src = data.image;
+      quizImage.style.display = 'block';
+    } else {
+      quizImage.src = '';
+      quizImage.style.display = 'none';
+    }
     
     quizOptions.innerHTML = '';
     data.options.forEach((opt, i) => {
