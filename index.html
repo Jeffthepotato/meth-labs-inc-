@@ -51,12 +51,23 @@
   .dot.active{opacity:1;transform:scale(1.6);background:var(--sun)}
   .dot:hover{opacity:.7}
 
-  /* Nav arrows */
+  /* Nav arrows & Fullscreen Button */
   .nav{position:fixed;bottom:clamp(12px, 2vw, 28px);left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:100;align-items:center}
   .nav button{background:var(--ink);color:var(--paper);border:none;height:clamp(34px, 4vw, 46px);padding:0 clamp(14px, 2.5vw, 22px);border-radius:24px;cursor:pointer;font-size:clamp(11px, 1.5vw, 14px);display:flex;align-items:center;justify-content:center;transition:all .3s ease;font-family:inherit;letter-spacing:.05em;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
   .nav button:hover{background:var(--sun);transform:scale(1.05)}
   .nav button:disabled{opacity:.3;cursor:not-allowed}
   .nav .count{font-family:'JetBrains Mono',monospace;font-size:clamp(9px, 1.2vw, 11px);align-self:center;color:var(--paper);background:var(--ink);padding:clamp(8px, 1.5vw, 14px) clamp(12px, 2vw, 18px);border-radius:24px;letter-spacing:.1em}
+  
+  /* Specific styling for the Fullscreen Button */
+  .fs-btn {
+    padding: 0 !important;
+    width: clamp(34px, 4vw, 46px);
+    height: clamp(34px, 4vw, 46px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .fs-btn svg { width: 50%; height: 50%; }
 
   /* Transition text hook */
   .transition-hook{
@@ -448,8 +459,8 @@
   }
   .whiteboard-widget.active { display: flex; }
   .whiteboard-widget.expanded {
-    width: 85vw; /* Enormous width (85% of screen) */
-    height: 80vh; /* Enormous height (80% of screen) */
+    width: 85vw; 
+    height: 80vh; 
     border-radius: 16px;
     top: 50%;
     left: 50%;
@@ -524,7 +535,7 @@
     .quiz-options { grid-template-columns: 1fr !important; }
     .dots { right: 12px; }
     .transition-hook { display: none; }
-    .nav { width: 90%; justify-content: space-between; }
+    .nav { width: 95%; justify-content: space-between; }
     .whiteboard-widget { bottom: 80px; left: 15px; }
     .whiteboard-widget.expanded {
       width: 90vw;
@@ -937,6 +948,14 @@
   <button id="prev">Previous</button>
   <div class="count" id="count">01 / 08</div>
   <button id="next">Next</button>
+  <button id="fullscreenBtn" class="fs-btn" aria-label="Toggle Fullscreen">
+    <svg id="fsExpandIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+    </svg>
+    <svg id="fsCollapseIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path>
+    </svg>
+  </button>
 </div>
 
 <div class="grain"></div>
@@ -954,18 +973,16 @@
   let wbLastY = 0;
 
   function updateWhiteboardVisibility() {
-    // Show only on slides 2 through 7 (indexes 1 to 6)
     if (current > 0 && current < total - 1) {
       whiteboard.classList.add('active');
     } else {
       whiteboard.classList.remove('active');
-      whiteboard.classList.remove('expanded'); // Always minimize when hiding
+      whiteboard.classList.remove('expanded');
     }
   }
 
   function setupCanvas() {
     const rect = wbCanvas.getBoundingClientRect();
-    // Save current drawing if any
     const imgData = wbCanvas.toDataURL(); 
     const dpr = window.devicePixelRatio || 1;
     wbCanvas.width = rect.width * dpr;
@@ -976,7 +993,6 @@
     wbCtx.strokeStyle = '#1a1410';
     wbCtx.lineWidth = 2.5;
     
-    // Restore drawing
     const img = new Image();
     img.onload = () => {
       wbCtx.drawImage(img, 0, 0, rect.width, rect.height);
@@ -986,7 +1002,7 @@
 
   wbExpandBtn.addEventListener('click', () => {
     whiteboard.classList.add('expanded');
-    setTimeout(setupCanvas, 300); // Wait for CSS transition to finish before setting canvas size
+    setTimeout(setupCanvas, 300);
   });
 
   wbCloseBtn.addEventListener('click', () => {
@@ -1073,7 +1089,6 @@
     newSlide.classList.add('active');
     current = idx;
     updateUI();
-    // Scroll to top on slide change for mobile
     window.scrollTo(0, 0);
   }
 
@@ -1098,7 +1113,6 @@
   let touchStartX = 0;
   document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX});
   document.addEventListener('touchend',e=>{
-    // Ignore swipe if touching the whiteboard, quiz options, or sticky notes
     if(e.target.closest('.whiteboard-widget') || e.target.classList.contains('quiz-option') || e.target.classList.contains('sticky-note')) return;
     const diff = e.changedTouches[0].screenX - touchStartX;
     if(Math.abs(diff)>50){
@@ -1108,6 +1122,38 @@
   });
 
   updateUI();
+
+  // ---- Fullscreen Logic ----
+  const fsBtn = document.getElementById('fullscreenBtn');
+  const fsExpandIcon = document.getElementById('fsExpandIcon');
+  const fsCollapseIcon = document.getElementById('fsCollapseIcon');
+
+  function toggleFullscreen() {
+    const elem = document.documentElement;
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { // Safari
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { // Safari
+        document.webkitExitFullscreen();
+      }
+    }
+  }
+
+  function updateFsIcon() {
+    const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+    fsExpandIcon.style.display = isFs ? 'none' : 'block';
+    fsCollapseIcon.style.display = isFs ? 'block' : 'none';
+  }
+
+  fsBtn.addEventListener('click', toggleFullscreen);
+  document.addEventListener('fullscreenchange', updateFsIcon);
+  document.addEventListener('webkitfullscreenchange', updateFsIcon);
 
   // ---- Quiz Logic ----
   const quizData = [
@@ -1119,7 +1165,7 @@
         "C. Because ocean currents push the air around",
         "D. Because clouds block the sunlight"
       ],
-      correct: 1, // B
+      correct: 1,
       bg: "linear-gradient(135deg, #fff9c4, #f5a661)"
     },
     {
@@ -1130,7 +1176,7 @@
         "C. Large systems of circular ocean currents formed by global wind patterns",
         "D. The process of warm air rising at the equator"
       ],
-      correct: 2, // C
+      correct: 2,
       bg: "linear-gradient(135deg, #b3e5fc, #0d4d5e)"
     },
     {
@@ -1141,7 +1187,7 @@
         "C. Earth's rotation; left in the Northern Hemisphere, right in the Southern Hemisphere",
         "D. The Sun's heat; straight up in both hemispheres"
       ],
-      correct: 1, // B
+      correct: 1,
       bg: "linear-gradient(135deg, #c8e6c9, #7ab8c9)"
     },
     {
@@ -1152,7 +1198,7 @@
         "C. Because the ocean currents push it up",
         "D. Because the Sun heats the Earth intensely there, warming the air"
       ],
-      correct: 3, // D
+      correct: 3,
       bg: "linear-gradient(135deg, #f8bbd0, #e8753a)"
     },
     {
@@ -1163,12 +1209,11 @@
         "C. The puddles are made of hot water that bubbles up from the sand",
         "D. It is caused by ocean currents carving deep holes into the sea floor"
       ],
-      correct: 1, // B
+      correct: 1,
       bg: "linear-gradient(135deg, #e1bee7, #7ab8c9)"
     }
   ];
 
-  // Custom transition classes for each question
   const transitions = ['transition-wind', 'transition-water', 'transition-planet', 'transition-wind', 'transition-bubbles'];
 
   const quizGrid = document.getElementById('quizGrid');
@@ -1179,13 +1224,11 @@
   const quizFeedback = document.getElementById('quizFeedback');
   const quizBackBtn = document.getElementById('quizBackBtn');
   
-  // Track which questions have been answered (only 0-3 matter for unlocking)
   const answeredStatus = [false, false, false, false];
 
   document.querySelectorAll('.sticky-note').forEach(note => {
     note.addEventListener('click', () => {
-      if (note.classList.contains('locked')) return; // Prevent clicking if locked
-      
+      if (note.classList.contains('locked')) return;
       const qIndex = parseInt(note.getAttribute('data-q'));
       openQuiz(qIndex);
     });
@@ -1206,19 +1249,15 @@
       quizOptions.appendChild(btn);
     });
 
-    // Clear previous transition classes
     quizDetail.className = 'quiz-detail-view';
-    // Add the specific transition class
     quizDetail.classList.add(transitions[index]);
     
     quizGrid.classList.add('hidden');
     
-    // Force reflow to restart animation
     void quizDetail.offsetWidth;
     
     quizDetail.classList.add('active');
 
-    // Handle SpongeBob bubbles
     if (index === 4) {
       spawnBubbles();
     }
@@ -1226,19 +1265,17 @@
 
   function spawnBubbles() {
     const container = document.getElementById('quizDetail');
-    // Limit to 6 subtle bubbles
     for(let i=0; i<6; i++) {
       const bubble = document.createElement('div');
       bubble.className = 'bubble';
-      const size = Math.random() * 50 + 30; // 30px to 80px
+      const size = Math.random() * 50 + 30;
       bubble.style.width = size + 'px';
       bubble.style.height = size + 'px';
       bubble.style.left = (Math.random() * 80 + 10) + '%';
-      bubble.style.animationDuration = (Math.random() * 2 + 3) + 's'; // 3s to 5s
+      bubble.style.animationDuration = (Math.random() * 2 + 3) + 's';
       bubble.style.animationDelay = (Math.random() * 1) + 's';
       container.appendChild(bubble);
       
-      // Clean up bubbles after animation
       setTimeout(() => bubble.remove(), 6000);
     }
   }
@@ -1249,8 +1286,6 @@
     
     if (selectedIndex === correctIndex) {
       btn.classList.add('correct');
-      
-      // Special message for the bonus question
       if (qIndex === 4) {
         quizFeedback.textContent = "Correct! You're a science genius! 🧽";
       } else {
@@ -1260,7 +1295,6 @@
     } else {
       btn.classList.add('wrong');
       allOptions[correctIndex].classList.add('correct');
-      
       if (qIndex === 4) {
         quizFeedback.textContent = "Not quite! But hey, it was just a bonus. 🧽";
       } else {
@@ -1269,7 +1303,6 @@
       quizFeedback.style.color = "#d32f2f";
     }
 
-    // Mark as answered and check for unlock
     if (qIndex < 4 && !answeredStatus[qIndex]) {
       answeredStatus[qIndex] = true;
       checkBonusUnlock();
